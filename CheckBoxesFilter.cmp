@@ -1,0 +1,38 @@
+<aura:component
+  implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction"
+  access="global"
+  controller="ContactsLoader"
+>
+  <aura:attribute name="CheckBox" type="Boolean" default="true" />
+  <aura:attribute name="data" type="Object" />
+  <aura:attribute name="columns" type="List" />
+  <aura:attribute name="filter" type="String" default="" />
+  <aura:attribute name="records" type="Contact[]" default="" />
+  <aura:attribute name="FilterText" type="List" default="" />
+  <aura:attribute name="GroupFilterText" type="List" default="" />
+  <aura:attribute name="options" type="List" />
+  <aura:attribute name="selectedVal" type="List" />
+  <aura:attribute name="ListValue" type="List" />
+
+  <div style="height: 50 px">
+    <ui:inputCheckbox
+      aura:id="checkbox"
+      label="All"
+      value="true"
+      change="{!c.onCheck}"
+    />
+  </div>
+
+  <aura:if isTrue="{!not(empty(v.GroupFilterText))}">
+    <div style="height: 50 px; display: inline-flex">
+      <lightning:checkboxGroup
+        name="Checkbox Group"
+        label="Recent filters"
+        options="{! v.options }"
+        value="{! v.selectedVal }"
+        onchange="{! c.handleChange }"
+        disabled="false"
+      />
+    </div>
+  </aura:if>
+</aura:component>

@@ -18,6 +18,7 @@ public class ContactsLoader {
     return obj;
   }
 
+
   @AuraEnabled
   public static List<Contact> getContactDetailsFilter(List<String> name) {
     system.debug('In get account details ');
