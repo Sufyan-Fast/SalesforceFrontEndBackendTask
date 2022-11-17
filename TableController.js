@@ -11,6 +11,7 @@
       { label: "Phone", fieldName: "Phone", type: "Phone" },
     ]);
 
+    //for loading the contacts for all checkbox
     helper.loadContacts(component);
   },
 });

@@ -1,12 +1,8 @@
 ({
   loadContacts: function (component) {
-    // Load all contact data
+    let action = component.get("c.getContacts");
 
-    let action1 = component.get("c.getContacts");
-
-    action1.setCallback(this, function (response) {
-      console.log("In first callback function");
-      console.log("response", response);
+    action.setCallback(this, function (response) {
       let state = response.getState();
       if (state === "SUCCESS") {
         let records = response.getReturnValue();
@@ -17,6 +13,6 @@
         component.set("v.data", records);
       }
     });
-    $A.enqueueAction(action1);
+    $A.enqueueAction(action);
   },
 });

@@ -8,26 +8,22 @@ public class ContactsLoader {
 
   @AuraEnabled
   public static List<Contact> getContactDetails(String name) {
-    system.debug('In get account details ');
     String searchString = '%' + name + '%';
-    List<Contact> obj = [
+    List<Contact> contactDetails = [
       SELECT Id, Name, Phone, Email
       FROM Contact
       WHERE FirstName LIKE :searchString OR LastName LIKE :searchString
     ];
-    return obj;
+    return contactDetails;
   }
-
 
   @AuraEnabled
   public static List<Contact> getContactDetailsFilter(List<String> name) {
-    system.debug('In get account details ');
-    //List<String> searchString = '%' + name + '%';
-    List<Contact> obj = [
+    List<Contact> contactDetailsList = [
       SELECT Id, Name, Phone, Email
       FROM Contact
       WHERE FirstName LIKE :name OR LastName LIKE :name
     ];
-    return obj;
+    return contactDetailsList;
   }
 }

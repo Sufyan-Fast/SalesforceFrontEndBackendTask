@@ -13,7 +13,7 @@
 
   <aura:attribute name="filter" type="String" default="" />
   <aura:attribute name="records" type="Contact[]" default="" />
-  <aura:attribute name="FilterText" type="List" default="" />
+
   <aura:attribute name="GroupFilterText" type="List" default="" />
   <aura:attribute name="options" type="List" />
   <aura:attribute name="selectedVal" type="List" />

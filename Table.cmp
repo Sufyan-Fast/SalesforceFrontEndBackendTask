@@ -5,6 +5,7 @@
 >
   <aura:attribute name="data" type="Object" />
   <aura:attribute name="columns" type="List" />
+  <!-- auraHandler Function -->
 
   <aura:handler name="init" value="{!this }" action="{!c.Init }" />
 
