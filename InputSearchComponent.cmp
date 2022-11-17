@@ -1,0 +1,56 @@
+<aura:component
+  implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction,lightning:actionOverride"
+  access="global"
+  controller="ContactsLoader"
+>
+  <!-- attributes -->
+  <aura:attribute name="data" type="Object" />
+  <aura:attribute name="columns" type="List" />
+
+  <aura:attribute name="CheckBox" type="Boolean" default="true" />
+  <aura:attribute name="searchText" type="string" access="private" />
+  <aura:attribute name="searchResult" type="List" access="private" />
+
+  <aura:attribute name="filter" type="String" default="" />
+  <aura:attribute name="records" type="Contact[]" default="" />
+
+  <aura:attribute name="GroupFilterText" type="List" default="" />
+  <aura:attribute name="options" type="List" />
+  <aura:attribute name="selectedVal" type="List" />
+  <aura:attribute name="ListValue" type="List" />
+
+  <div style="height: 1200 px; width: 1200px">
+    <div class="slds-container slds-container--small">
+      <label class="slds-form-element__label" for="text-input-id-1"
+        >Search</label
+      >
+      <lightning:icon
+        iconName="utility:search"
+        alternativeText="Search"
+        title="Search"
+        size="small"
+      ></lightning:icon>
+      <span onkeypress="{!c.keyCheck}" class="slds-size--11-of-12">
+        <lightning:input
+          type="text"
+          id="text-input-id-1"
+          placeholder="Contacts"
+          value="{!v.searchText}"
+          onchange="{!c.handleInputChange}"
+        />
+      </span>
+    </div>
+
+    <c:CheckBoxesFilter
+      aura:id="CheckBoxesFilterComponent"
+      CheckBox="{v.CheckBox}"
+      data="{! v.data }"
+      columns="{! v.columns }"
+      options="{!v.options}"
+      GroupFilterText="{!v.GroupFilterText}"
+      selectedVal="{!v.selectedVal}"
+    />
+
+    <c:Table aura:id="Table" data="{! v.data }" columns="{! v.columns }" />
+  </div>
+</aura:component>
