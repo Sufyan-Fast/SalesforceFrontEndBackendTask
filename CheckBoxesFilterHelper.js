@@ -28,13 +28,13 @@
     action.setCallback(this, function (response) {
       let state = response.getState();
       if (state === "SUCCESS") {
-        var contacts = response.getReturnValue();
+        let contacts = response.getReturnValue();
 
         contacts.forEach(function (contact) {
           contact.linkName = "/" + contact.Id;
         });
+        component.set("v.data", contacts);
       }
-      component.set("v.data", contacts);
     });
 
     $A.enqueueAction(action);
